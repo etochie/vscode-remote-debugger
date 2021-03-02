@@ -1,0 +1,46 @@
+{
+    "configurations": [
+        {
+            "type": "python",
+            "name": "Debug all file",
+            "request": "launch",
+            "program": "${workspaceFolder}/srf/manage.py",
+            "args": ["test", "${input:inputFilePath}.${fileBasenameNoExtension}"],
+            "cwd": "${workspaceFolder}/srf",
+        },
+        {
+            "type": "python",
+            "name": "Debug selected case",
+            "request": "launch",
+            "program": "${workspaceFolder}/srf/manage.py",
+            "args": ["test", "${input:inputFilePath}.${fileBasenameNoExtension}.${selectedText}"],
+            "cwd": "${workspaceFolder}/srf",
+        },
+        {
+            "type": "python",
+            "name": "Debug selected method",
+            "request": "launch",
+            "program": "${workspaceFolder}/srf/manage.py",
+            "args": ["test", "${input:inputFilePath}.${fileBasenameNoExtension}.${input:inputCaseName}.${selectedText}"],
+            "cwd": "${workspaceFolder}/srf",
+        },
+        // {
+        //     "type": "python",
+        //     "request": "attach",
+        //     "name": "Attach docker",
+        //     "listen": {"host": "127.0.0.1", "port": 8080}
+        // }
+    ],
+    "inputs": [
+        {
+            "id": "inputFilePath",
+            "type":"promptString",
+            "description": "Введите путь до файла (например, 'moneyflowapp.tests'): "
+        },
+        {
+            "id": "inputCaseName",
+            "type":"promptString",
+            "description": "Введите название класса (например, 'MoneyFlowAppTestCase'): "
+        }
+    ]
+}
